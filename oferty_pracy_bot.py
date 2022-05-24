@@ -16,7 +16,7 @@ import datetime
 stanowisko = ('finanse-ksiegowosc', 'administracja-biurowa')
 
 gmail_address = 'marcin.automatyzacje@gmail.com'
-password = 'Pyt123'
+password = 'P...3'
 
 def send_email_alert_new(link, title):
     try:
@@ -45,7 +45,6 @@ def send_email_alert_new(link, title):
         
 
 
-
 def main():
     try:
         
@@ -66,6 +65,7 @@ def main():
                         if title not in file.read():                            
                             file.write(f'{title}; {link}\n') # in append mode writes will always go to the end, so no need to seek()
                             send_email_alert_new(link, title)
+                            #wysylka_whatsapp(link)
                             print(f'wysyłam mail z pracuj: {title}')
                 except:
                     pass
@@ -93,6 +93,7 @@ def main():
                         if title not in file.read():                            
                             file.write(f'{title}; {link}\n') # in append mode writes will always go to the end, so no need to seek()
                             send_email_alert_new(link, title)
+                            #wysylka_whatsapp(link)
                             print(f'wysyłam mail z olx: {title}')
           
         print(f'Progam działa -- {datetime.datetime.now()}')
@@ -105,4 +106,3 @@ schedule.every(30).seconds.do(main)
 while True:
     schedule.run_pending()
     time.sleep(1)
-
